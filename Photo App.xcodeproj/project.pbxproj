@@ -92,47 +92,44 @@
 		9D31A3E027FB4975000574F4 /* Photo App */ = {
 			isa = PBXGroup;
 			children = (
-				9D8705D127FF1BE2002B72C0 /* PhotoScreen */,
-				9D31A41327FCB718000574F4 /* Models */,
-				9D31A40327FC95A8000574F4 /* UsersScreen */,
-				9D31A40027FC57BB000574F4 /* ProfileScreen */,
 				9D31A42827FDE95A000574F4 /* AppDelegate */,
-				9D31A3FA27FB4BB2000574F4 /* Auth Screen */,
-				9D31A3ED27FB4979000574F4 /* Assets.xcassets */,
-				9D31A3EF27FB4979000574F4 /* LaunchScreen.storyboard */,
-				9D31A3F227FB4979000574F4 /* Info.plist */,
-				9D31A3EA27FB4975000574F4 /* Photo_App.xcdatamodeld */,
-				9D31A3FD27FB4CD7000574F4 /* Extension_UIView.swift */,
-				9D31A41427FCB74A000574F4 /* CoreDataManager.swift */,
+				9D31A3FA27FB4BB2000574F4 /* LoginModule */,
+				9D31A40027FC57BB000574F4 /* ProfileModule */,
+				9D31A40327FC95A8000574F4 /* UsersModule */,
+				9D8705D127FF1BE2002B72C0 /* PhotoModule */,
+				9D31A41327FCB718000574F4 /* Models */,
+				9D70C28F28006D2200B4D7D2 /* Other */,
+				9D70C28D28006D0200B4D7D2 /* Extensions */,
+				9D70C28E28006D0D00B4D7D2 /* CoreDataManager */,
 			);
 			path = "Photo App";
 			sourceTree = "<group>";
 		};
-		9D31A3FA27FB4BB2000574F4 /* Auth Screen */ = {
+		9D31A3FA27FB4BB2000574F4 /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
 				9D31A3F827FB4BA9000574F4 /* AuthViewController.swift */,
 				9D31A3FB27FB4BC8000574F4 /* AuthView.swift */,
 			);
-			path = "Auth Screen";
+			path = LoginModule;
 			sourceTree = "<group>";
 		};
-		9D31A40027FC57BB000574F4 /* ProfileScreen */ = {
+		9D31A40027FC57BB000574F4 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
 				9D31A40927FC982F000574F4 /* ProfileView.swift */,
 				9D31A40127FC57DE000574F4 /* ProfileViewController.swift */,
 			);
-			path = ProfileScreen;
+			path = ProfileModule;
 			sourceTree = "<group>";
 		};
-		9D31A40327FC95A8000574F4 /* UsersScreen */ = {
+		9D31A40327FC95A8000574F4 /* UsersModule */ = {
 			isa = PBXGroup;
 			children = (
 				9D31A40427FC95DC000574F4 /* UsersTableViewController.swift */,
 				9D8705CF27FF1254002B72C0 /* UsersTableVIewCell.swift */,
 			);
-			path = UsersScreen;
+			path = UsersModule;
 			sourceTree = "<group>";
 		};
 		9D31A41327FCB718000574F4 /* Models */ = {
@@ -155,16 +152,51 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		9D8705D127FF1BE2002B72C0 /* PhotoScreen */ = {
+		9D70C28C28006BDB00B4D7D2 /* PhotoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9D8705E427FF7B32002B72C0 /* PhotoRedactor */,
-				9D8705D927FF2F29002B72C0 /* AlbumsTable */,
 				9D8705D227FF1BFD002B72C0 /* PhotoViewController.swift */,
 				9D8705D827FF2052002B72C0 /* PhotoCollectionView */,
+			);
+			path = PhotoViewController;
+			sourceTree = "<group>";
+		};
+		9D70C28D28006D0200B4D7D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D31A3FD27FB4CD7000574F4 /* Extension_UIView.swift */,
 				9D8705E127FF4936002B72C0 /* ImageView+Extension.swift */,
 			);
-			path = PhotoScreen;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9D70C28E28006D0D00B4D7D2 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				9D31A3EA27FB4975000574F4 /* Photo_App.xcdatamodeld */,
+				9D31A41427FCB74A000574F4 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		9D70C28F28006D2200B4D7D2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				9D31A3ED27FB4979000574F4 /* Assets.xcassets */,
+				9D31A3EF27FB4979000574F4 /* LaunchScreen.storyboard */,
+				9D31A3F227FB4979000574F4 /* Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		9D8705D127FF1BE2002B72C0 /* PhotoModule */ = {
+			isa = PBXGroup;
+			children = (
+				9D8705E427FF7B32002B72C0 /* PhotoRedactorController */,
+				9D8705D927FF2F29002B72C0 /* AlbumsTableController */,
+				9D70C28C28006BDB00B4D7D2 /* PhotoViewController */,
+			);
+			path = PhotoModule;
 			sourceTree = "<group>";
 		};
 		9D8705D827FF2052002B72C0 /* PhotoCollectionView */ = {
@@ -176,21 +208,21 @@
 			path = PhotoCollectionView;
 			sourceTree = "<group>";
 		};
-		9D8705D927FF2F29002B72C0 /* AlbumsTable */ = {
+		9D8705D927FF2F29002B72C0 /* AlbumsTableController */ = {
 			isa = PBXGroup;
 			children = (
 				9D8705DB27FF2F5C002B72C0 /* AlbumsTableViewCell.swift */,
 				9D8705DD27FF2FC5002B72C0 /* AlbumsTableViewController.swift */,
 			);
-			path = AlbumsTable;
+			path = AlbumsTableController;
 			sourceTree = "<group>";
 		};
-		9D8705E427FF7B32002B72C0 /* PhotoRedactor */ = {
+		9D8705E427FF7B32002B72C0 /* PhotoRedactorController */ = {
 			isa = PBXGroup;
 			children = (
 				9D8705E527FF7B72002B72C0 /* PhotoRedactorViewController.swift */,
 			);
-			path = PhotoRedactor;
+			path = PhotoRedactorController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +459,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9HLRZXHR68;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Photo App/Info.plist";
+				INFOPLIST_FILE = "Photo App/Other/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -442,7 +474,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,7 +487,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9HLRZXHR68;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Photo App/Info.plist";
+				INFOPLIST_FILE = "Photo App/Other/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -470,7 +502,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
