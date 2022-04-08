@@ -13,14 +13,15 @@ class ProfileViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        profileView.currentUserLabel.text = "Welcome \(currentUser?.user ?? "")"
+        self.title = "\(currentUser?.user ?? "")"
+        navigationItem.title = "Welcome \(currentUser?.user ?? "")"
         if let imageData = currentUser?.avatar {
             profileView.currentAvatarImageView.image = UIImage(data: imageData)
+            profileView.currentAvatarImageView.contentMode = .scaleToFill
         }
     }
     private func configure() {
         currentUser = cdManager.currentUser(userName: currentUser?.user ?? "")
-        self.title = "Your profile"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubviews(profileView)
         view.viewConstraints(subView: profileView)

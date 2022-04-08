@@ -44,8 +44,7 @@ class AuthViewController: UIViewController {
         let usersTable = UINavigationController(rootViewController: tableVC)
         let tabBar = UITabBarController()
         tabBar.navigationController?.navigationBar.prefersLargeTitles = false
-        tabBar.tabBar.selectedItem?.badgeColor = .red
-        tabBar.navigationController?.navigationBar.backgroundColor = .gray
+        tabBar.tabBar.backgroundColor = .systemGray6
         tabBar.viewControllers = [profileNav, usersTable]
         
         if sender.titleLabel?.text == "Sign up" {

@@ -87,7 +87,7 @@ class AlbumsTableViewController: UITableViewController {
         let item = indexPath.item
         let assets: PHFetchResult<PHAsset>
         let title: String
-        let vc = PhotoViewController()
+        
         switch sectionType {
         case .all:
             assets = allPhotos

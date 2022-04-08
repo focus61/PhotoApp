@@ -1,31 +1,26 @@
 import UIKit
 //Добавить разделительные линии между обьектами UI
 class ProfileView: UIView {
-    let currentUserLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "User name"
-        lbl.font = UIFont.systemFont(ofSize: 40)
-        lbl.numberOfLines = 0
-        return lbl
-    }()
     let currentAvatarLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "User avatar:"
+        lbl.text = "Your avatar:"
         lbl.font = UIFont.systemFont(ofSize: 30)
         lbl.textAlignment = .center
         return lbl
     }()
     let currentAvatarImageView: UIImageView = {
         let imgView = UIImageView()
+        imgView.backgroundColor = .red
         imgView.layer.cornerRadius = 50
-        imgView.contentMode = .scaleAspectFit
+        imgView.contentMode = .scaleToFill
         return imgView
     }()
     let changeAvatarButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .roundedRect)
         button.setTitle("Change avatar", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 10
+
         return button
     }()
     let signOutButton: UIButton = {
@@ -47,31 +42,27 @@ class ProfileView: UIView {
         configure()
     }
     func configure() {
-        addSubviews(currentUserLabel, currentAvatarLabel, currentAvatarImageView,changeAvatarButton, signOutButton, deleteProfileButton)
+        addSubviews(currentAvatarLabel, currentAvatarImageView,changeAvatarButton, signOutButton, deleteProfileButton)
         constraints()
     }
     
     func constraints() {
         NSLayoutConstraint.activate([
-            currentUserLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            currentUserLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            currentUserLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
-            currentUserLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
-            currentUserLabel.heightAnchor.constraint(equalToConstant: 100),
             
-            currentAvatarLabel.topAnchor.constraint(equalTo: currentUserLabel.bottomAnchor),
+            currentAvatarLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             currentAvatarLabel.bottomAnchor.constraint(equalTo: currentAvatarImageView.bottomAnchor),
             currentAvatarLabel.rightAnchor.constraint(equalTo: centerXAnchor),
             currentAvatarLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
             
-            currentAvatarImageView.topAnchor.constraint(equalTo: currentUserLabel.bottomAnchor),
+            currentAvatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             currentAvatarImageView.heightAnchor.constraint(equalToConstant: 100),
             currentAvatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            currentAvatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 10),
+            currentAvatarImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+//            currentAvatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 10),
             
             changeAvatarButton.topAnchor.constraint(equalTo: currentAvatarImageView.bottomAnchor, constant: 10),
-            changeAvatarButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            changeAvatarButton.widthAnchor.constraint(equalToConstant: 200),
+            changeAvatarButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+            changeAvatarButton.widthAnchor.constraint(equalToConstant: 150),
             changeAvatarButton.heightAnchor.constraint(equalToConstant: 40),
             
             signOutButton.bottomAnchor.constraint(equalTo: deleteProfileButton.topAnchor, constant: -20),
