@@ -16,7 +16,6 @@ class UsersTableVIewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: UsersTableVIewCell.cell)
         addSubviews(nameLabel,avatarImageView)
         constraint()
-        avatarImageView.backgroundColor = .clear
     }
     private func constraint() {
         NSLayoutConstraint.activate([

@@ -8,6 +8,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "\(currentUser?.user ?? "")"
@@ -15,6 +16,8 @@ class ProfileViewController: UIViewController {
         if let imageData = currentUser?.avatar {
             profileView.currentAvatarImageView.image = UIImage(data: imageData)
             profileView.currentAvatarImageView.contentMode = .scaleToFill
+            profileView.currentAvatarImageView.clipsToBounds = true
+            profileView.currentAvatarImageView.layer.cornerRadius = 75
         }
     }
     
@@ -26,6 +29,8 @@ class ProfileViewController: UIViewController {
         profileView.deleteProfileButton.addTarget(self, action: #selector(deleteTarget), for: .touchUpInside)
         profileView.signOutButton.addTarget(self, action: #selector(signOutTarget), for: .touchUpInside)
         profileView.changeAvatarButton.addTarget(self, action: #selector(changePhotoTarget), for: .touchUpInside)
+        view.backgroundColor = .systemYellow
+
     }
     
     @objc func deleteTarget() {

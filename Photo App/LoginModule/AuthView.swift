@@ -3,7 +3,7 @@ class AuthView: UIView {
     static var isRegister = false
     static var isSignUp = false
     let infoLabel: UILabel = {
-        var lbl = UILabel()
+        let lbl = UILabel()
         lbl.text = "Log in your profile"
         lbl.numberOfLines = 0
         lbl.font = UIFont.systemFont(ofSize: 30)
@@ -11,30 +11,36 @@ class AuthView: UIView {
         return lbl
     }()
     let userNameLabel: UILabel = {
-        var lbl = UILabel()
+        let lbl = UILabel()
         lbl.text = "User"
         lbl.font = UIFont.systemFont(ofSize: 20)
-        
         return lbl
     }()
     let userNameTextField: UITextField = {
-        var txtFld = UITextField()
+        let txtFld = UITextField()
         txtFld.backgroundColor = .systemGray5
         txtFld.placeholder = "Enter your name"
         txtFld.textAlignment = .center
         txtFld.layer.cornerRadius = 10
-
         return txtFld
     }()
-    var signInButton: UIButton = {
-        var button = UIButton()
+    let passwordTextField: UITextField = {
+        let txtFld = UITextField()
+        txtFld.backgroundColor = .systemGray5
+        txtFld.placeholder = "Enter your password"
+        txtFld.textAlignment = .center
+        txtFld.layer.cornerRadius = 10
+        return txtFld
+    }()
+    let signInButton: UIButton = {
+        let button = UIButton()
         button.setTitle("Sign in", for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemBlue
         return button
     }()
     var signUpButton: UIButton = {
-        var button = UIButton()
+        let button = UIButton()
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 10
         button.setTitle("Sign up", for: .normal)
@@ -51,7 +57,7 @@ class AuthView: UIView {
     }
     
     private func configureView() {
-        addSubviews(infoLabel, userNameLabel, userNameTextField, signInButton, signUpButton)
+        addSubviews(infoLabel, userNameLabel, userNameTextField, passwordTextField, signInButton, signUpButton)
         constraint()
 
     }
@@ -73,15 +79,20 @@ class AuthView: UIView {
             userNameTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
             userNameTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
 
-            signInButton.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 20),
-            signInButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+            passwordTextField.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 20),
+            passwordTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            passwordTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
+            
+            signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
             signInButton.heightAnchor.constraint(equalToConstant: 40),
-            signInButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
+            signInButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signInButton.widthAnchor.constraint(equalToConstant: 200),
             
             signUpButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            signUpButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor,constant: -10),
-            signUpButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor,constant: 10),
-            signUpButton.heightAnchor.constraint(equalToConstant: 40)
+            signUpButton.heightAnchor.constraint(equalToConstant: 40),
+            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpButton.widthAnchor.constraint(equalToConstant: 200)
             
         ])
     }

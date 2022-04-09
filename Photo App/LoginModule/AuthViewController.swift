@@ -13,7 +13,7 @@ class AuthViewController: UIViewController {
         authView.signUpButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
         view.addSubviews(authView)
         view.viewConstraints(subView: authView)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemYellow
     }
     
     @objc func pressed() {

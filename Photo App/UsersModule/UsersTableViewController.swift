@@ -10,10 +10,13 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        
     }
     private func configure() {
         self.title = "Users"
         tableView.register(UsersTableVIewCell.self, forCellReuseIdentifier: UsersTableVIewCell.cell )
+        view.backgroundColor = .systemYellow
+
     }
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,6 +37,8 @@ class UsersTableViewController: UITableViewController {
         cell.nameLabel.text = data.user
         if let imageData = data.avatar {
             cell.avatarImageView.image = UIImage(data: imageData)?.withRenderingMode(.automatic)
+            cell.avatarImageView.clipsToBounds = true
+            cell.avatarImageView.layer.cornerRadius = 40
         }
         return cell
     }
