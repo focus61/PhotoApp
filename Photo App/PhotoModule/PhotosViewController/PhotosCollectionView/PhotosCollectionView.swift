@@ -3,7 +3,7 @@ class PhotosCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         let layout = UICollectionViewFlowLayout()
         super.init(frame: frame, collectionViewLayout: layout)
-        register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.cell)
+        register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.cell)
         alwaysBounceVertical = true
     }
 
@@ -18,7 +18,7 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cell, for: indexPath) as? PhotoCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.cell, for: indexPath) as? PhotosCollectionViewCell else {return UICollectionViewCell()}
         let asset = assets[indexPath.item]
         cell.photosImageView.fetchImageAsset(asset, targetSize: cell.photosImageView.bounds.size, completionHandler: nil)
         return cell

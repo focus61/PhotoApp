@@ -1,5 +1,5 @@
 import UIKit
-class PhotoCollectionViewCell: UICollectionViewCell {
+class PhotosCollectionViewCell: UICollectionViewCell {
     static var cell = "Cell"
     let photosImageView: UIImageView = {
         let imgView = UIImageView()

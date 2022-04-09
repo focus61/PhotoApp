@@ -11,6 +11,7 @@ class ProfileView: UIView {
         let imgView = UIImageView()
         imgView.backgroundColor = .red
         imgView.contentMode = .scaleToFill
+        imgView.addBorder(toSide: .Bottom, withColor: UIColor.black.cgColor, andThickness: 2)
         return imgView
     }()
     let changeAvatarButton: UIButton = {

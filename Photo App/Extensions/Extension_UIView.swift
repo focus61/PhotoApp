@@ -1,5 +1,9 @@
 import UIKit
 extension UIView {
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+    
     func addSubviews(_ views: UIView...) {
         for i in views {
             i.translatesAutoresizingMaskIntoConstraints = false
