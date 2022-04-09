@@ -1,9 +1,5 @@
 import UIKit
-
 class UsersTableVIewCell: UITableViewCell {
-    
-    static var cell = "Cell"
-    
     let nameLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 30)
@@ -14,14 +10,15 @@ class UsersTableVIewCell: UITableViewCell {
         imgView.backgroundColor = .clear
         return imgView
     }()
-    
+    static var cell = "Cell"
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: UsersTableVIewCell.cell)
         addSubviews(nameLabel,avatarImageView)
         constraint()
         avatarImageView.backgroundColor = .clear
     }
-    func constraint() {
+    private func constraint() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
@@ -39,4 +36,3 @@ class UsersTableVIewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

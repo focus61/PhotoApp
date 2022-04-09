@@ -1,25 +1,28 @@
-//
-//  PhotoRedactorViewController.swift
-//  Photo App
-//
-//  Created by Aleksandr on 07.04.2022.
-//
-
 import UIKit
-
+import Photos
 class PhotoRedactorViewController: UIViewController {
     let imageView = UIImageView()
+    var asset: PHAsset?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
+    }
+    
+    private func configure() {
         view.backgroundColor = .white
         view.addSubviews(imageView)
         imageView.contentMode = .scaleAspectFit
         view.viewConstraints(subView: imageView)
-        
+        getPhoto()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
     }
+    
+    private func getPhoto() {
+        imageView.fetchImageAsset(asset, targetSize: view.bounds.size, completionHandler: nil)
+    }
+    
     @objc func save() {
-        let vc = ProfileViewController()
         var user: User?
         if let users = CoreDataManager.shared.users() {
             for i in users {
@@ -29,11 +32,12 @@ class PhotoRedactorViewController: UIViewController {
             }
         }
         guard let data = imageView.image?.jpegData(compressionQuality: 0), let user = user else {return}
-        vc.currentUser = user
-//        print(user, "and", data)
-        vc.profileView.currentAvatarImageView.image = UIImage(data: data)
+        let profileVC = ProfileViewController()
+        let tableVC = UsersTableViewController()
+        profileVC.currentUser = user
+        profileVC.profileView.currentAvatarImageView.image = UIImage(data: data)
+        let tabBar = UITabBarController().createTabBarController(firstVC: profileVC, secondVC: tableVC)
         CoreDataManager.shared.updateAvatar(object: user, imageData: data)
-        
-        navigationController?.popToRootViewController(animated: true)
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBar, options: [.transitionFlipFromRight])
     }
 }

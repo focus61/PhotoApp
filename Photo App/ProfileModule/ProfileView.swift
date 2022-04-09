@@ -1,5 +1,4 @@
 import UIKit
-//Добавить разделительные линии между обьектами UI
 class ProfileView: UIView {
     let currentAvatarLabel: UILabel = {
         let lbl = UILabel()
@@ -11,7 +10,6 @@ class ProfileView: UIView {
     let currentAvatarImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.backgroundColor = .red
-        imgView.layer.cornerRadius = 50
         imgView.contentMode = .scaleToFill
         return imgView
     }()
@@ -20,7 +18,6 @@ class ProfileView: UIView {
         button.setTitle("Change avatar", for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 10
-
         return button
     }()
     let signOutButton: UIButton = {
@@ -37,16 +34,17 @@ class ProfileView: UIView {
         button.layer.cornerRadius = 10
         return button
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
-    func configure() {
+    private func configure() {
         addSubviews(currentAvatarLabel, currentAvatarImageView,changeAvatarButton, signOutButton, deleteProfileButton)
         constraints()
     }
     
-    func constraints() {
+    private func constraints() {
         NSLayoutConstraint.activate([
             
             currentAvatarLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -58,8 +56,7 @@ class ProfileView: UIView {
             currentAvatarImageView.heightAnchor.constraint(equalToConstant: 100),
             currentAvatarImageView.widthAnchor.constraint(equalToConstant: 100),
             currentAvatarImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
-//            currentAvatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 10),
-            
+
             changeAvatarButton.topAnchor.constraint(equalTo: currentAvatarImageView.bottomAnchor, constant: 10),
             changeAvatarButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
             changeAvatarButton.widthAnchor.constraint(equalToConstant: 150),

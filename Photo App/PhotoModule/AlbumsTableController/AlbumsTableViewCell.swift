@@ -1,11 +1,3 @@
-//
-//  AlbumsTableViewCell.swift
-//  Photo App
-//
-//  Created by Aleksandr on 07.04.2022.
-//
-
-import Foundation
 import UIKit
 class AlbumsTableViewCell: UITableViewCell {
     let emptyView: UIImageView = {
@@ -19,15 +11,10 @@ class AlbumsTableViewCell: UITableViewCell {
         imgView.contentMode = .scaleAspectFit
         return imgView
     }()
-    let albumTitle: UILabel = {
-        let lbl = UILabel()
-        return lbl
-    }()
-    let albumCount: UILabel = {
-        let lbl = UILabel()
-        return lbl
-    }()
+    let albumTitle = UILabel()
+    let albumCount = UILabel()
     static var cell = "Cell"
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: AlbumsTableViewCell.cell)
         addSubviews(emptyView, photoView,albumTitle, albumCount)
@@ -37,7 +24,6 @@ class AlbumsTableViewCell: UITableViewCell {
         photoView.image = nil
         photoView.isHidden = true
         emptyView.isHidden = false
-        
     }
     
     required init?(coder: NSCoder) {

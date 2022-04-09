@@ -55,6 +55,7 @@ class AuthView: UIView {
         constraint()
 
     }
+    
     private func constraint() {
         NSLayoutConstraint.activate([
             infoLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),

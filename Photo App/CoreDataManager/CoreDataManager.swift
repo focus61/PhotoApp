@@ -1,19 +1,8 @@
-//
-//  CoreDataManager.swift
-//  Photo App
-//
-//  Created by Aleksandr on 05.04.2022.
-//
-
 import UIKit
 import CoreData
-
 class CoreDataManager {
-    
     static let shared = CoreDataManager()
-    init() {
-    }
-    
+    init() {}
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Photo_App")
@@ -68,15 +57,14 @@ class CoreDataManager {
         }
         return nil
     }
+    
     func signOut(object: User) {
         object.isLoad = false
         saveContext()
     }
     
     func updateAvatar(object: User, imageData: Data) {
-        print(imageData)
         object.avatar = imageData
-        print(object.avatar)
         saveContext()
     }
     
@@ -98,7 +86,7 @@ class CoreDataManager {
         }
         return false
     }
-    
+//Check isLogin
     func loginIsEmpty() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LoginStatus")
         if let login = try? viewContext.fetch(fetchRequest) as? [LoginStatus] {
@@ -109,6 +97,7 @@ class CoreDataManager {
             }
         }
     }
+    
     func loginUpdate(isLogin: Bool) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LoginStatus")
         if let login = try? viewContext.fetch(fetchRequest) as? [LoginStatus] {

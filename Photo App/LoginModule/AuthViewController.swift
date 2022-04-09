@@ -1,24 +1,14 @@
-//
-//  AuthViewController.swift
-//  Photo App
-//
-//  Created by Aleksandr on 04.04.2022.
-//
-
 import UIKit
-import CoreData
-
 class AuthViewController: UIViewController {
-
     let authView = AuthView()
-    var coreDataManager = CoreDataManager()
+    private let manager = CoreDataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
-    func configure() {
+    private func configure() {
         authView.signInButton.addTarget(self, action: #selector(register(sender:)), for: .touchUpInside)
         authView.signUpButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
         view.addSubviews(authView)
@@ -37,27 +27,19 @@ class AuthViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc func register(sender: UIButton) {
-//tabBar config
         let profileVC = ProfileViewController()
         let tableVC = UsersTableViewController()
-        let profileNav = UINavigationController(rootViewController: profileVC)
-        let usersTable = UINavigationController(rootViewController: tableVC)
-        let tabBar = UITabBarController()
-        tabBar.navigationController?.navigationBar.prefersLargeTitles = false
-        tabBar.tabBar.backgroundColor = .systemGray6
-        tabBar.viewControllers = [profileNav, usersTable]
-        
+        let tabBar = UITabBarController().createTabBarController(firstVC: profileVC, secondVC: tableVC)
         if sender.titleLabel?.text == "Sign up" {
 //If sign up
             let txtFieldText = authView.userNameTextField.text ?? ""
             if !txtFieldText.isEmpty && txtFieldText.count > 3 {
-                if coreDataManager.containsUser(text: txtFieldText) {
+                if manager.containsUser(text: txtFieldText) {
                     view.alert(message: "Username is taken", target: self)
                 } else {
-                    profileVC.currentUser = coreDataManager.createUser(user: txtFieldText)
-                    
+                    profileVC.currentUser = manager.createUser(user: txtFieldText)
                     tableVC.tableView.reloadData()
-                    coreDataManager.loginUpdate(isLogin: true)
+                    manager.loginUpdate(isLogin: true)
                     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBar, options: [.transitionFlipFromRight])
                 }
             } else {
@@ -67,9 +49,9 @@ class AuthViewController: UIViewController {
 //If sign in
             let txtFieldText = authView.userNameTextField.text ?? ""
             if !txtFieldText.isEmpty && txtFieldText.count > 3 {
-                if coreDataManager.containsUser(text: txtFieldText) {
-                    profileVC.currentUser = coreDataManager.currentUser(userName: txtFieldText)
-                    coreDataManager.loginUpdate(isLogin: true)
+                if manager.containsUser(text: txtFieldText) {
+                    profileVC.currentUser = manager.currentUser(userName: txtFieldText)
+                    manager.loginUpdate(isLogin: true)
                     tableVC.tableView.reloadData() 
                     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBar, options: [.transitionFlipFromRight])
                 } else {

@@ -1,11 +1,8 @@
-
 import UIKit
-
 class ProfileViewController: UIViewController {
-
     let profileView = ProfileView()
     var currentUser: User?
-    var cdManager = CoreDataManager()
+    private let manager = CoreDataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,14 +11,15 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "\(currentUser?.user ?? "")"
-        navigationItem.title = "Welcome \(currentUser?.user ?? "")"
+        navigationItem.title = "\(currentUser?.user ?? "")"
         if let imageData = currentUser?.avatar {
             profileView.currentAvatarImageView.image = UIImage(data: imageData)
             profileView.currentAvatarImageView.contentMode = .scaleToFill
         }
     }
+    
     private func configure() {
-        currentUser = cdManager.currentUser(userName: currentUser?.user ?? "")
+        currentUser = manager.currentUser(userName: currentUser?.user ?? "")
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubviews(profileView)
         view.viewConstraints(subView: profileView)
@@ -34,24 +32,24 @@ class ProfileViewController: UIViewController {
         let vc = AuthViewController()
         let navCont = UINavigationController(rootViewController: vc)
         guard let currentUser = currentUser, let user = currentUser.user else {return}
-        cdManager.deleteUser(user: user)
-        cdManager.loginUpdate(isLogin: false)
+        manager.deleteUser(user: user)
+        manager.loginUpdate(isLogin: false)
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navCont, options: [.transitionFlipFromLeft])
-        
     }
     
     @objc func signOutTarget() {
         let vc = AuthViewController()
         let navCont = UINavigationController(rootViewController: vc)
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navCont, options: [.transitionFlipFromLeft])
-        cdManager.loginUpdate(isLogin: false)
+        manager.loginUpdate(isLogin: false)
         guard let currentUser = currentUser else {
             return
         }
-        cdManager.signOut(object: currentUser)
+        manager.signOut(object: currentUser)
     }
     
     @objc func changePhotoTarget() {
-        navigationController?.pushViewController(PhotoViewController(), animated: true)
+        let vc = PhotosViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
