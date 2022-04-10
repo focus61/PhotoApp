@@ -42,7 +42,7 @@ class PhotosViewController: UIViewController {
         constraint()
         let rightButton = UIBarButtonItem(title: "Albums", style: .plain, target: self, action: #selector(watchAlbums))
         navigationItem.rightBarButtonItem = rightButton
-        view.backgroundColor = UIColor().myColor()
+        view.backgroundColor = .white
     }
     
     private func constraint() {

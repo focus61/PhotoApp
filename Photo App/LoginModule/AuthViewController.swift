@@ -16,7 +16,7 @@ class AuthViewController: UIViewController {
         authView.passwordTextField.delegate = self
         view.addSubviews(authView)
         view.viewConstraints(subView: authView)
-        view.backgroundColor = UIColor().myColor()
+        view.backgroundColor = .white
     }
     
     @objc func pressedSignUp() {

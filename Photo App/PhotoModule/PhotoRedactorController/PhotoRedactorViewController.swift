@@ -14,7 +14,7 @@ class PhotoRedactorViewController: UIViewController {
         view.addSubviews(imageView)
         imageView.contentMode = .scaleAspectFit
         view.viewConstraints(subView: imageView)
-        view.backgroundColor = UIColor().myColor()
+        view.backgroundColor = .white
         getPhoto()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAndUpdateAvatar))
     }

@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
         profileView.deleteProfileButton.addTarget(self, action: #selector(deleteTarget), for: .touchUpInside)
         profileView.signOutButton.addTarget(self, action: #selector(signOutTarget), for: .touchUpInside)
         profileView.changeAvatarButton.addTarget(self, action: #selector(changePhotoTarget), for: .touchUpInside)
-        view.backgroundColor = UIColor().myColor()
+        view.backgroundColor = .white
     }
     
     @objc func deleteTarget() {
