@@ -19,7 +19,7 @@ extension UITabBarController {
         tabbar.viewControllers = [profileNav, usersTable]
         usersTable.title = "Users"
         tabbar.navigationController?.navigationBar.prefersLargeTitles = false
-        tabbar.tabBar.backgroundColor = .systemGray6
+        tabbar.tabBar.backgroundColor = .systemGray5
         tabbar.viewControllers?[0].tabBarItem.image = UIImage(systemName: "person")
         tabbar.viewControllers?[1].tabBarItem.image = UIImage(systemName: "person.2.wave.2")
         return tabbar

@@ -8,17 +8,21 @@ class PhotosViewController: UIViewController {
     var assets = PHFetchResult<PHAsset>()
     let collectionView = PhotosCollectionView()
     let albumsVC = AlbumsTableViewController()
-
+    var first = true
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        self.getPermissionIfNecessary {[weak self] granted in
+        getPermissionIfNecessary {[weak self] granted in
             guard granted, let self = self else { return }
             self.fetchAssets()
-            self.collectionView.reloadData()
+            if self.first {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
-    
+//MARK: -Fetch photos data
     private func fetchAssets() {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [
@@ -38,6 +42,7 @@ class PhotosViewController: UIViewController {
         constraint()
         let rightButton = UIBarButtonItem(title: "Albums", style: .plain, target: self, action: #selector(watchAlbums))
         navigationItem.rightBarButtonItem = rightButton
+        view.backgroundColor = UIColor().myColor()
     }
     
     private func constraint() {
@@ -56,6 +61,7 @@ class PhotosViewController: UIViewController {
         self.present(navCont, animated: true)
     }
 }
+
 extension PhotosViewController: ChangeAlbumProtocol {
     func changeAlbum(title: String, asset: PHFetchResult<PHAsset>) {
         self.title = title

@@ -14,9 +14,8 @@ class UsersTableViewController: UITableViewController {
     }
     private func configure() {
         self.title = "Users"
+        navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(UsersTableVIewCell.self, forCellReuseIdentifier: UsersTableVIewCell.cell )
-        view.backgroundColor = .systemYellow
-
     }
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,7 +27,7 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +37,7 @@ class UsersTableViewController: UITableViewController {
         if let imageData = data.avatar {
             cell.avatarImageView.image = UIImage(data: imageData)?.withRenderingMode(.automatic)
             cell.avatarImageView.clipsToBounds = true
-            cell.avatarImageView.layer.cornerRadius = 40
+            cell.avatarImageView.layer.cornerRadius = 35
         }
         return cell
     }

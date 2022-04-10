@@ -3,6 +3,7 @@ class UsersTableVIewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 30)
+        lbl.textAlignment = .left
         return lbl
     }()
     let avatarImageView: UIImageView = {
@@ -19,13 +20,13 @@ class UsersTableVIewCell: UITableViewCell {
     }
     private func constraint() {
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
-            avatarImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 80),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
+            avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 5),
+            avatarImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 70),
             
             nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            nameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
+            nameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 10),
             nameLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             nameLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10)
         ])

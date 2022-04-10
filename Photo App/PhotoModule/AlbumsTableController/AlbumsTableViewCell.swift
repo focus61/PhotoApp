@@ -17,6 +17,15 @@ class AlbumsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: AlbumsTableViewCell.cell)
+        configure()
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
         addSubviews(emptyView, photoView,albumTitle, albumCount)
         constraint()
         albumTitle.text = "Untitled"
@@ -25,12 +34,7 @@ class AlbumsTableViewCell: UITableViewCell {
         photoView.isHidden = true
         emptyView.isHidden = false
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func constraint() {
+    private func constraint() {
         NSLayoutConstraint.activate([
             
             photoView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -47,7 +51,7 @@ class AlbumsTableViewCell: UITableViewCell {
             albumTitle.bottomAnchor.constraint(equalTo: albumCount.topAnchor),
             albumTitle.widthAnchor.constraint(equalToConstant: 200),
             albumTitle.heightAnchor.constraint(equalToConstant: 30),
-
+            
             albumCount.leftAnchor.constraint(equalTo: photoView.rightAnchor, constant: 10),
             albumCount.bottomAnchor.constraint(equalTo: photoView.centerYAnchor, constant: 20),
             albumCount.widthAnchor.constraint(equalToConstant: 100),
@@ -56,7 +60,7 @@ class AlbumsTableViewCell: UITableViewCell {
     }
     
     func update(title: String?, count: Int) {
-      albumTitle.text = title ?? "Untitled"
-      albumCount.text = "\(count.description) \(count == 1 ? "photo" : "photos")"
+        albumTitle.text = title ?? "Untitled"
+        albumCount.text = "\(count.description) \(count == 1 ? "photo" : "photos")"
     }
 }

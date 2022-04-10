@@ -1,4 +1,5 @@
 import UIKit
+import Photos
 class ProfileViewController: UIViewController {
     let profileView = ProfileView()
     var currentUser: User?
@@ -12,12 +13,12 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "\(currentUser?.user ?? "")"
-        navigationItem.title = "\(currentUser?.user ?? "")"
+        navigationItem.title = "Hello, \(currentUser?.user ?? "")"
         if let imageData = currentUser?.avatar {
             profileView.currentAvatarImageView.image = UIImage(data: imageData)
             profileView.currentAvatarImageView.contentMode = .scaleToFill
             profileView.currentAvatarImageView.clipsToBounds = true
-            profileView.currentAvatarImageView.layer.cornerRadius = 75
+            profileView.currentAvatarImageView.layer.cornerRadius = 65
         }
     }
     
@@ -29,8 +30,7 @@ class ProfileViewController: UIViewController {
         profileView.deleteProfileButton.addTarget(self, action: #selector(deleteTarget), for: .touchUpInside)
         profileView.signOutButton.addTarget(self, action: #selector(signOutTarget), for: .touchUpInside)
         profileView.changeAvatarButton.addTarget(self, action: #selector(changePhotoTarget), for: .touchUpInside)
-        view.backgroundColor = .systemYellow
-
+        view.backgroundColor = UIColor().myColor()
     }
     
     @objc func deleteTarget() {
@@ -55,6 +55,11 @@ class ProfileViewController: UIViewController {
     
     @objc func changePhotoTarget() {
         let vc = PhotosViewController()
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+            vc.first = false
+        }
+        let backButton = UIBarButtonItem(title: "Profile", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
         navigationController?.pushViewController(vc, animated: true)
     }
 }

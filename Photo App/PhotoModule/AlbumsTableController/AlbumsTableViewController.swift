@@ -39,7 +39,7 @@ class AlbumsTableViewController: UITableViewController {
     @objc func back() {
         self.dismiss(animated: true, completion: nil)
     }
-
+//MARK: - Fetch albums data -
     private func fetchAssets() {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [
@@ -58,6 +58,7 @@ class AlbumsTableViewController: UITableViewController {
             options: nil)
     }
 }
+//MARK: - TableView DataSource
 extension AlbumsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count

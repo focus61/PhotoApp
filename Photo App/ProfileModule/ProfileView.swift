@@ -2,10 +2,11 @@ import UIKit
 class ProfileView: UIView {
     let currentAvatarLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Your avatar"
+        lbl.text = "Nice to meet you😇"
         lbl.font = UIFont.systemFont(ofSize: 30)
-        lbl.textAlignment = .center
-        lbl.addBottomBorder(with: .systemGray3, andWidth: 1)
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 0
+        lbl.addBottomBorder(with: .systemGray3, andWidth: 2)
         return lbl
     }()
     let currentAvatarImageView: UIImageView = {
@@ -47,14 +48,14 @@ class ProfileView: UIView {
         NSLayoutConstraint.activate([
             
             currentAvatarLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            currentAvatarLabel.heightAnchor.constraint(equalToConstant: 80),
-            currentAvatarLabel.rightAnchor.constraint(equalTo: centerXAnchor),
-            currentAvatarLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
+            currentAvatarLabel.heightAnchor.constraint(equalToConstant: 100),
+            currentAvatarLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
+            currentAvatarLabel.leftAnchor.constraint(equalTo: currentAvatarImageView.rightAnchor, constant: 10),
             
             currentAvatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            currentAvatarImageView.heightAnchor.constraint(equalToConstant: 150),
-            currentAvatarImageView.widthAnchor.constraint(equalToConstant: 150),
-            currentAvatarImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
+            currentAvatarImageView.heightAnchor.constraint(equalToConstant: 130),
+            currentAvatarImageView.widthAnchor.constraint(equalToConstant: 130),
+            currentAvatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
 
             changeAvatarButton.topAnchor.constraint(equalTo: currentAvatarLabel.bottomAnchor, constant: 10),
             changeAvatarButton.rightAnchor.constraint(equalTo: currentAvatarLabel.rightAnchor),

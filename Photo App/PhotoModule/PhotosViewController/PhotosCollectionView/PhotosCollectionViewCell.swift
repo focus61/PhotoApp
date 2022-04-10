@@ -5,6 +5,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         let imgView = UIImageView()
         return imgView
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews(photosImageView)

@@ -14,15 +14,16 @@ class PhotoRedactorViewController: UIViewController {
         view.addSubviews(imageView)
         imageView.contentMode = .scaleAspectFit
         view.viewConstraints(subView: imageView)
+        view.backgroundColor = UIColor().myColor()
         getPhoto()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAndUpdateAvatar))
     }
     
     private func getPhoto() {
         imageView.fetchImageAsset(asset, targetSize: view.bounds.size, completionHandler: nil)
     }
     
-    @objc func save() {
+    @objc func saveAndUpdateAvatar() {
         var user: User?
         if let users = CoreDataManager.shared.users() {
             for i in users {

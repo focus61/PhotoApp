@@ -30,11 +30,12 @@ class CoreDataManager {
         }
     }
     
-    func createUser(user: String?) -> User? {
+    func createUser(user: String, password: String) -> User? {
         guard let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: viewContext) as? User else {return nil}
         newUser.user = user
         newUser.isLoad = true
         newUser.avatar = UIImage(named: "Contact")?.jpegData(compressionQuality: 0)
+        newUser.password = password
         saveContext()
         return newUser
     }
@@ -48,9 +49,9 @@ class CoreDataManager {
         return []
     }
     
-    func currentUser(userName: String?) -> User? {
+    func currentUser(userName: String) -> User? {
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "user == %@", userName ?? "")
+        fetchRequest.predicate = NSPredicate(format: "user == %@", userName)
         if let users = try? viewContext.fetch(fetchRequest) {
             users.first?.isLoad = true
             return users.first
@@ -78,9 +79,19 @@ class CoreDataManager {
         }
     }
     
-    func containsUser(text: String?) -> Bool {
+    func isValidPassword(user: String, password: String) -> Bool {
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "user == %@", text ?? "")
+        fetchRequest.predicate = NSPredicate(format: "user == %@", user)
+        if let users = try? viewContext.fetch(fetchRequest), !users.isEmpty {
+            guard let user = users.first, let passwords = user.password else {return false}
+            return passwords == password
+        }
+        return false
+    }
+    
+    func containsUser(user: String) -> Bool {
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "user == %@", user)
         if let users = try? viewContext.fetch(fetchRequest), !users.isEmpty {
             return true
         }

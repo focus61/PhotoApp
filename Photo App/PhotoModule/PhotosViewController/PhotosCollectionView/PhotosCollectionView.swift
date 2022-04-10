@@ -5,6 +5,7 @@ class PhotosCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.cell)
         alwaysBounceVertical = true
+        backgroundColor = UIColor().myColor()
     }
 
     required init?(coder: NSCoder) {
