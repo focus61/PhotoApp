@@ -1,5 +1,5 @@
 # PhotoApp
-<p>Приложение включает в себя аутентификацию пользователя и работу с фотографиями.</p>
+<p>Приложение включает в себя аутентификацию пользователя и работу с фотографиями (для нормальной работы на симуляторе, просьба отключить AutoFill и Detect compromissed password).</p>
 <p>Разделы README:</p>
 
 - [Structure](#structure)
@@ -27,7 +27,7 @@
 <img alt="App image" src="Screenshots/incorrectName.png" width="30%">
 <img alt="App image" src="Screenshots/tokenName.png" width="30%">
 
-<p>При успешной авторизации пользователь переходи в свой профиль.</p>
+<p>При успешной авторизации пользователь переходит в свой профиль.</p>
 
 ## ProfileModule
 <p>Модуль работает на основе UITabBarController & UIViewController. Экран показывает имя пользователя и его аватар.</p>
